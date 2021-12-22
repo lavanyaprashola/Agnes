@@ -1,0 +1,408 @@
+using System;
+
+namespace  helloworld
+{
+	// class 1
+	class onlineShopping
+	{
+	     public void login(){
+		    int Age;
+		    int option;
+		    while (true){
+		    Console.WriteLine("*******Welcome to TRENDS*******");
+            Console.WriteLine("You have to login  first !!!!!");
+            Console.WriteLine("SELECT THE OPTION 1. NEW USER 2.ALREADY HAVE ACCOUNT");  // option for sign in or sign up
+            option =  Convert.ToInt32(Console.ReadLine());
+            if(option==1){
+              Console.WriteLine("Enter first name: ");
+              string first_name = Console.ReadLine(); // first name input
+              Console.WriteLine("Enter last name : ");
+              string last_name  = Console.ReadLine();  // last name input 
+              Console.WriteLine("ENTER PHNO"); 
+               bool flag=true;
+              while (flag){
+                  string phno =  Console.ReadLine();// phone num input
+                  long phone =phno.Length;
+              if (phone==10){
+                   Console.WriteLine("PHONE NUM: "+phno);
+                   flag=false;
+                   }
+                   else{
+                      Console.WriteLine ("Check your number try again");
+                      Console.WriteLine("enter correct Phone Number:");
+                }
+              }
+              bool hlo=true;
+              while (hlo){
+                       Console.WriteLine("Enter age  "); // AGE input
+                       Age =  Convert.ToInt32(Console.ReadLine());
+                       if (Age>=18&&Age<=45){
+                           Console.WriteLine();
+                           hlo=false;
+                       }
+                       else{
+                       Console.WriteLine("enter correct age ");
+                       }
+              }
+              Console.WriteLine("enter email id ");  // email input
+              string emailid= Console.ReadLine();
+              Console.WriteLine("Enter PASSWORD "); // password input 
+               string password =  Console.ReadLine();
+              string pd= new string('#',password.Length);
+              Console.WriteLine();
+              Console.WriteLine();
+              Console.WriteLine("SUCESSFULLY YOU REGISTER !!!!1");
+              Console.WriteLine();
+              Console.WriteLine("User name is: " + first_name + " " + last_name); // details the user entered
+              //Console.WriteLine("AGE:"+Age);
+              //Console.WriteLine("PHONE NUM: "+phno);
+              Console.WriteLine("EMAIL ID: "+emailid);
+              Console.WriteLine("PASSWORD: "+pd);
+
+              Console.WriteLine();
+              break;
+              }
+            else if(option==2){    // sign up
+            Console.WriteLine("Enter email id");
+            string emailid= Console.ReadLine();
+            Console.WriteLine("Enter PASSWORD ");
+            string PASSWORD  = Console.ReadLine();
+            Console.WriteLine();
+            break;
+           }
+           else
+           {
+               Console.WriteLine("invalid input try again");
+               break;
+           }
+		    }
+		    Console.WriteLine("ensure your details  ,enter OK for continue  or enter cancel for exist ");
+            string choice  =  Console.ReadLine();
+            
+            if (choice=="ok"){
+                  Console.WriteLine();
+              }
+             else if (choice =="cancel")
+             {
+                 Console.WriteLine("Thank you!!");
+             }
+             else
+             {
+                 Console.WriteLine("Enter valid comments");
+                 choice  =  Console.ReadLine();
+             }
+             Console.WriteLine(" ENTER -SHOW- code TO SEE THE AVAILBLE DRESS STYLE IN TRENDS AND CLICK");
+              string code  =Console.ReadLine();
+             
+             if (code=="SHOW"){
+                 string[]styles ={ "1.traditional" ,"2. western","3.Sport","4.Casualwear"};
+                foreach (string i in styles ) 
+                    {
+                        Console.WriteLine(i);
+                    } 
+                 }
+                 else{
+                    Console.WriteLine("try again ");
+                    Console.WriteLine("1.traditional" ,"2. western","3.Sport","4.Casualwear");
+                    code  =Console.ReadLine();
+                }
+             
+	     }      
+	                  
+	                  
+	     // class  2
+	                 class styles{
+	                     
+	                  public void traditional(){
+	                     
+                          Console.WriteLine("Available dress in traditional");
+                          Console.WriteLine("1. saree 2.kurties ");
+                          int type =Convert.ToInt32(Console.ReadLine());
+                          
+                          if(type==1){
+                              Console.WriteLine("IN sarees there are  4 collection there");
+                                string[]collection ={ "COLLECTION:","1.cotton" ,"2.synthetic ","3.silk","4.fancy"};
+                               foreach (string i in collection) 
+                                   {
+                                       Console.WriteLine(i);
+                                     }
+                                     
+                              //Console.WriteLine("COLLECTION:","cotton" ,"synthetic","silk","fancy");
+                             
+                                   
+                            }
+                            else if (type==2){
+                                Console.WriteLine("IN Kurties there are  4 collection there");
+                                string[]collection ={ "1.LONG" ,"2.SHORT ","3.SEMI STICHED"};
+                               foreach (string i in collection) 
+                                   {
+                                       Console.WriteLine(i);
+                                     }
+                                
+                            }
+                            else{
+                                 Console.WriteLine("try again");
+                                 type =Convert.ToInt32(Console.ReadLine());
+                            }
+	              }
+                    public void Western(){
+                          Console.WriteLine("Available dress in western");
+                          Console.WriteLine("1.jeans 2.frock ");
+                          int type =Convert.ToInt32(Console.ReadLine());
+                          if(type==1){
+                              Console.WriteLine("IN JEANS there are   collection there");
+                                string[]collection ={ "COLLECTION:","1.Jeggings" ,"2.Bootcut ","3.Skinny"};
+                               foreach (string i in collection) 
+                                   {
+                                       Console.WriteLine(i);
+                                     }
+                            }
+                            else if (type==2){
+                                Console.WriteLine("IN FROCK there are  4 collection there");
+                                string[]collection ={ "1.LONG" ,"2.SHORT ","3.U CUT"};
+                               foreach (string i in collection) 
+                                   {
+                                       Console.WriteLine(i);
+                                     }
+                            }
+                            else{
+                                 Console.WriteLine("try again");
+                                 type =Convert.ToInt32(Console.ReadLine());
+                            }
+                     }
+                    public void Sport(){
+                          Console.WriteLine("Available dress in Sport");
+                          Console.WriteLine("1.yoga pants 2.tOPS");
+                          int type =Convert.ToInt32(Console.ReadLine());
+                          if(type==1){
+                              Console.WriteLine("IN YOGA PANTS there are   collection there");
+                                string[]collection = {"COLLECTION:","1.Specialty Fabric " ,"2.Legging","3.Maternity","4.Loose fitting "};
+                               foreach (string i in collection) 
+                                   {
+                                       Console.WriteLine(i);
+                                     }
+                    }
+                              //Console.WriteLine("COLLECTION:","cotton" ,"synthetic","silk","fancy"); }
+                            else if (type==2){
+                                Console.WriteLine("IN TOPS there are  3 collection there");
+                                string[]collection ={ "1.TANK" ,"2.RACERBACK","3.Long-Sleeved Shirts"};
+                               foreach (string i in collection) {
+                                   {
+                                       Console.WriteLine(i);
+                                     }
+                            }
+                            }
+                            else{
+                                 Console.WriteLine("try again");
+                                 type =Convert.ToInt32(Console.ReadLine());
+                            }
+                            }
+                      public void Casualwear(){
+                          Console.WriteLine("Available dress in Casualwear ");
+                          Console.WriteLine("1.T-shirts 2.Shorts");
+                           int type =Convert.ToInt32(Console.ReadLine());
+                          if(type==1){
+                              Console.WriteLine("IN CASUALWEAR there are  3 collection there");
+                                string[]collection = {"COLLECTION:","1.SLEEVE " ,"2.SLEEVELESS","3.DESIGN"};
+                               foreach (string i in collection) 
+                                   {
+                                       Console.WriteLine(i);
+                                        Console.WriteLine();
+                                     }
+                    }
+                              //Console.WriteLine("COLLECTION:","cotton" ,"synthetic","silk","fancy"); }
+                            else if (type==2){
+                                Console.WriteLine("IN SHORTS there are  3 collection there");
+                                string[]collection ={ "1.Booty " ,"2.Roll-Up ","3.Paper Bag"};
+                               foreach (string i in collection) {
+                                   {
+                                       Console.WriteLine(i);
+                                        Console.WriteLine();
+                                     }
+                            }
+                            }
+                            else{
+                                 Console.WriteLine("try again");
+                                 type =Convert.ToInt32(Console.ReadLine());
+                            }
+                            }
+	                 }
+	                 class filter{
+                      public void dresses(){
+                     string[][]arr= new string[][]{
+                              
+                             new string[]{ "COLOR:","RED","VIOLET","BLUE" ,"BLACK"}, 
+                             new string[]{"COST:"," 500-1000","1000-5000","5000-10000" },
+                             new string []{"SIZE:","S","M","L","XL","XXL"}
+                             
+                              };
+                                   for (int i = 0; i < arr.Length; i++)  
+                                    {  
+                                        for (int j = 0; j < arr[i].Length; j++)  
+                                        {  
+                                            Console.WriteLine(arr[i][j]+" ");  
+                                        }  
+                                        Console.WriteLine();  
+                                    } 
+                                     Console.WriteLine("ENTER YOUR FILTER YOU WANT") ;
+                                     Console.WriteLine(" ENTER FILTER ON COLLECTION YOU WANT ") ;
+                                      string COLLECTION =Console.ReadLine();
+                                      Console.WriteLine(" ENTER FILTER ON COLOR YOU WANT ") ;
+                                      string COLOR =Console.ReadLine();
+                                       Console.WriteLine(" ENTER SIZE ON YOU WANT ") ;
+                                       string SIZE =Console.ReadLine();
+                                        Console.WriteLine(" ENTER COST  ON YOU WANT ") ;
+                                      string COST =Console.ReadLine();
+                                    if(COST=="500-1000") {
+                                        if (COLOR =="RED" ||COLOR=="VIOLET"){
+                                         Console.WriteLine("you get 10% discount");
+                                         Console.WriteLine("YOU NEED TO PAY 699 ONLY");
+                                        }
+                                         else if (COLOR=="BLUE"||COLOR =="BLACK"){
+                                             Console.WriteLine("you get 5% discount");
+                                             Console.WriteLine("YOU NEED TO PAY 859 ONLY");
+                                         }
+                                         else{Console.WriteLine( "try again");
+                                         Console.WriteLine(" ENTER FILTER ON COLOR YOU WANT ") ;
+                                         COLOR =Console.ReadLine();}
+                                    }
+                                    else if (COST=="1000-5000"){
+                                        if (COLOR =="RED" ||COLOR=="VIOLET"){
+                                         Console.WriteLine("you get 10% discount");
+                                         Console.WriteLine("YOU NEED TO PAY 2999 ONLY");
+                                        }
+                                         else if (COLOR=="BLUE"||COLOR =="BLACK"){
+                                             Console.WriteLine("you get 5% discount");
+                                             Console.WriteLine("YOU NEED TO PAY 359 ONLY");
+                                         }
+                                         else{Console.WriteLine( "try again");
+                                         Console.WriteLine(" ENTER FILTER ON COLOR YOU WANT ") ;
+                                         COLOR =Console.ReadLine();}
+                                        
+                                         Console.WriteLine();  
+                                    }
+                                     else if (COST=="5000-10000"){
+                                         if (COLOR =="RED" ||COLOR=="VIOLET"){
+                                         Console.WriteLine("you get 10% discount");
+                                         Console.WriteLine("YOU NEED TO PAY 7999 ONLY");
+                                        }
+                                         else if (COLOR=="BLUE"||COLOR =="BLACK"){
+                                             Console.WriteLine("you get 5% discount");
+                                             Console.WriteLine("YOU NEED TO PAY 8599 ONLY");
+                                         }
+                                         else{Console.WriteLine( "try again");
+                                         Console.WriteLine(" ENTER FILTER ON COLOR YOU WANT ") ;
+                                         COLOR =Console.ReadLine();}
+                                         Console.WriteLine();  
+                                     }
+                     }
+	                 }
+	                 // class 3
+	                 class payment {
+	                         string opt;
+	                         int pay;
+	                       public void payMethod ()   //default contructor
+                      {
+                              Console.WriteLine("ENTER BUY FOR CONTINUE AND EXIST FOR  CLOSE  ");
+                              opt=Console.ReadLine();
+                              if (opt=="BUY"){
+                                  Console.WriteLine(" ENTER METHOD YOU WANT 1.COD 2. DEBIT 3. CREDIT ");
+                                  pay=Convert.ToInt32(Console.ReadLine());
+                                  Console.WriteLine("Enter your address");
+                                   string  address=Console.ReadLine();
+                                  
+                                  if (pay==2||pay==3){
+                                      Console.WriteLine("Enter your CARD NUMBER" );
+                                     int CARD=Convert.ToInt32(Console.ReadLine());
+                                      Console.WriteLine("Enter your CARD password" );
+                                     int Cpass=Convert.ToInt32(Console.ReadLine());
+                                  }
+                                  else{Console.WriteLine();}
+                                   Console.WriteLine("Ensure details click ok for place your  order" );
+                                   string conclude=Console.ReadLine();
+                                   if (conclude=="ok"){
+                                       Console.WriteLine("Your order is placed ");
+                                       
+                                   }else{ Console.WriteLine(" try again ");
+                                      opt=Console.ReadLine();
+                                   }
+                                     
+                              }
+                              else{
+                                  Console.WriteLine("Thank you");
+                                  
+                              }
+                       }
+	                     
+	                 }
+	                 class Details     // class4
+    {
+        string name;
+        int  phone_num;
+        string order_ittem;
+        string addre;
+        string date;
+        public Details()
+        {
+           
+        }
+        public Details(string n,int  pn,string OITEM,string add,string date_M)   // PARAMETER contructor
+        {
+            this.name=n;
+            this.phone_num=pn;
+            this.order_ittem=OITEM;
+            this.addre=add;
+            this.date=date_M;
+            
+        }
+        public string getName(){return name ;}
+        public int getPhone_num(){return phone_num ;}
+        public string getOrder_item(){return order_ittem;}
+        public string getAddre(){return addre;}
+        public string getDate(){return date;}
+        public string toString()
+        {
+            return (" NAME:  "+this.getName()+ " PHONE NUMBER  : " + this.getPhone_num() + "ORDER ITEM : "+this.getOrder_item() + "ADDRESS :  " + this.getAddre()+ "DATE " + this.getDate());
+        }
+    }
+
+	                 static void Main(string[] args){
+                          onlineShopping myobj= new onlineShopping();
+                          myobj.login();
+                          styles obj=new styles();
+                          Console.WriteLine("enter code for which type you want");
+                          int wear=Convert.ToInt32(Console.ReadLine());
+                           if (wear<5){
+                            switch (wear){
+                             case 1 :
+                                 obj.traditional();
+                                  break;
+                             case 2 :
+                                   obj.Western();
+                                   break;
+                             case 3 :
+                                  obj.Sport();
+                                   break;
+                             case 4 :
+                                  obj.Casualwear();
+                                   break;
+                         }
+                     }
+                     else{
+                        Console.WriteLine("try again ") ;
+                        Console.WriteLine("enter code for which type you want");
+                          wear=Convert.ToInt32(Console.ReadLine());
+                     }
+            //wear  selection 
+                          
+                          filter sort = new filter();
+                          sort.dresses();
+                          payment done =new payment ();
+                          done.payMethod();
+                          Details NEW=new Details("AAA",22,"BBBB","DD-MM-YYYY","hfg");
+                          Console.WriteLine(NEW.toString());
+                          Console.WriteLine("*****************Thank you for your purchase******************");	                    }
+                     }
+                }     
+                          
+    
