@@ -1,0 +1,126 @@
+
+                                           REQUIREMENT -5
+using System.Collections.Generic;
+using System;
+
+public class PasswordValidation
+{
+	public void Main()
+	{
+		Console.WriteLine("Enter the number of stories");
+		int noOfStories = Convert.ToInt32(Console.ReadLine());
+		List<Story> storyList= new List<Story>(); 
+		Console.WriteLine("Please enter the stroy details:");
+		for (int i=0; i < noOfStories; i++)
+		{			
+			string storyDetails = Console.ReadLine();
+			storyList.Add(Story.createStory(storyDetails));
+		}
+		Console.WriteLine("Enter a type to sort: \n1.sort by name 2.sort by no.of Reads");
+		int searcType = Convert.ToInt32(Console.ReadLine());
+		switch (searcType)
+		{
+		case 1:
+			storyList.Sort();			
+			break;
+		case 2:
+		  NoOfReadsComparator noOfReadsComparator = new NoOfReadsComparator();  
+          storyList.Sort(noOfReadsComparator);
+		  break;
+		default:
+			Console.WriteLine("Invalid Choice");	
+			break;
+		}
+		Console.WriteLine("{0,5} {1,10} {2,15} {3,20} {4,25} {5,30}", "name", "authorName", "genre", "noOfChapters", "noOfLikes", "noOfReads");
+		foreach(Story story in storyList)
+		{
+				Console.WriteLine("{0,5} {1,10} {2,15} {3,20} {4,25} {5,30}", story.Name, story.AuthorName, story.Genre, story.NoOfChapters, story.NoOfLikes, story.NoOfReads);  	
+		}		
+	}
+}
+
+
+
+public class Story : IComparable
+{
+		private string name { get; set; }
+		private string authorName { get; set; }
+		private string genre { get; set; }
+		private int noOfChapters { get; set; }
+		private int noOfLikes { get; set; }
+		private int noOfReads { get; set; }
+		
+	public Story(string name, string authorName, string genre, int noOfChapters, int noOfLikes, int noOfReads)
+	{
+		this.name = name;
+		this.authorName = authorName;
+		this.genre = genre;
+		this.noOfChapters = noOfChapters;
+		this.noOfLikes= noOfLikes;
+		this.noOfReads = noOfReads;
+	}
+	
+	public string Name
+	{
+		set { name = value; }
+		get { return name;}
+	}	
+	
+	public string AuthorName
+	{
+		set { authorName = value; }
+		get { return authorName;}
+	}
+	
+	public string Genre
+	{
+		set { genre = value; }
+		get { return genre;}
+	}
+	
+	public int NoOfChapters
+	{
+		set { noOfChapters = value; }
+		get { return noOfChapters;}
+	}
+	
+	public int NoOfLikes
+	{
+		set { noOfLikes = value; }
+		get { return noOfLikes;}
+	}
+	
+	public int NoOfReads
+	{
+		set { noOfReads = value; }
+		get { return noOfReads;}
+	}	
+	public static Story createStory(string detail)
+	{
+			string[] values = detail.Split(',');
+			Story story = new Story(values[0], values[1], values[2],  Convert.ToInt32(values[3]), Convert.ToInt32(values[4]), Convert.ToInt32(values[5]));
+			return story;
+	}
+	public int CompareTo(object obj) 
+	{
+		if (obj == null) return 1;    
+          Story story = obj as Story;    
+          if(story != null)    
+          {    
+              return this.name.CompareTo(story.name);    
+          }    
+          else    
+          {    
+              throw new ArgumentException("Object doesn't have a proper price");    
+          }    
+	} 	
+}
+public class NoOfReadsComparator :  IComparer<Story>  
+{
+	   public int Compare(Story x, Story y)  
+       {  
+           Story firstStory = x as Story;  
+           Story secondStory = y as Story;  
+           return firstStory.NoOfReads.CompareTo(secondStory.NoOfReads);  
+       }
+}
