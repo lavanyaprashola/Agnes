@@ -1,0 +1,126 @@
+using System.Collections.Generic;     // REQUIREMENT -4
+using System;
+using System.Linq;
+
+public class PasswordValidation
+{
+	public void Main()
+	{
+		Console.WriteLine("Enter the number of stories");
+		int noOfStories = Convert.ToInt32(Console.ReadLine());
+		List<Story> storyList = new List<Story>(); 
+		List<Story> outputStoryList = new List<Story>(); 
+		Console.WriteLine("Please enter the stroy details:");
+		for (int i=0; i < noOfStories; i++)
+		{
+			string storyDetails = Console.ReadLine();
+			string[] values = storyDetails.Split(',');
+			Story story = new Story(values[0], values[1], values[2],  Convert.ToInt32(values[3]), Convert.ToInt32(values[4]), Convert.ToInt32(values[5]));
+			storyList.Add(story);
+		}
+		Console.WriteLine("Enter a search type: \n1.By author 2.By number of likes");
+		int searcType = Convert.ToInt32(Console.ReadLine());
+		StroyBO stroyBO = new StroyBO();
+		switch (searcType)
+		{
+		case 1:
+			Console.WriteLine("Enter the author Name");	
+			string authorName = Console.ReadLine(); 					
+			outputStoryList = stroyBO.findStory(storyList, authorName);	
+			break;
+		case 2:
+			Console.WriteLine("Enter the no of likes");
+			int noOfLikes = Convert.ToInt32(Console.ReadLine()); 	
+			outputStoryList = stroyBO.findStory(storyList, noOfLikes);	
+			break;
+		default:
+			Console.WriteLine("Invalid Choice");	
+			break;
+		}
+		if (outputStoryList.Count() == 0)
+		{
+			Console.WriteLine("No such story is present");
+		}
+		else
+		{
+			Console.WriteLine("{0,5} {1,10} {2,15} {3,20} {4,25} {5,30}", "name", "authorName", "genre", "noOfChapters", "noOfLikes", "noOfReads");
+			foreach(Story story in outputStoryList)
+			{
+				Console.WriteLine("{0,5} {1,10} {2,15} {3,20} {4,25} {5,30}", story.Name, story.AuthorName, story.Genre, story.NoOfChapters, story.NoOfLikes, story.NoOfReads);  	
+			}
+		}
+	}
+}
+
+
+
+public class Story
+{
+		private string name { get; set; }
+		private string authorName { get; set; }
+		private string genre { get; set; }
+		private int noOfChapters { get; set; }
+		private int noOfLikes { get; set; }
+		private int noOfReads { get; set; }
+		
+	public Story(string name, string authorName, string genre, int noOfChapters, int noOfLikes, int noOfReads)
+	{
+		this.name = name;
+		this.authorName = authorName;
+		this.genre = genre;
+		this.noOfChapters = noOfChapters;
+		this.noOfLikes= noOfLikes;
+		this.noOfReads = noOfReads;
+	}
+	
+	public string Name
+	{
+		set { name = value; }
+		get { return name;}
+	}	
+	
+	public string AuthorName
+	{
+		set { authorName = value; }
+		get { return authorName;}
+	}
+	
+	public string Genre
+	{
+		set { genre = value; }
+		get { return genre;}
+	}
+	
+	public int NoOfChapters
+	{
+		set { noOfChapters = value; }
+		get { return noOfChapters;}
+	}
+	
+	public int NoOfLikes
+	{
+		set { noOfLikes = value; }
+		get { return noOfLikes;}
+	}
+	
+	public int NoOfReads
+	{
+		set { noOfReads = value; }
+		get { return noOfReads;}
+	}	
+}
+
+public class StroyBO
+{
+	public List<Story> findStory(List<Story> storyList, string authorName)
+	{
+		storyList = storyList.Where(x => x.AuthorName == authorName).ToList();
+		return storyList;	
+	}
+	
+	public List<Story> findStory(List<Story> storyList, int noOfLikes)
+	{
+		storyList = storyList.Where(x => x.NoOfLikes > noOfLikes).ToList();
+		return storyList;	
+	}
+}
